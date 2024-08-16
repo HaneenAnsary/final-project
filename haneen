@@ -43,13 +43,13 @@ if __name__ == "__main__":
 
     # Example: Rename a file from 'old.txt' to 'new.txt'
     print("\nRenaming 'old.txt' to 'new.txt':")
-    if fm.rename_files("C:\\Users\\welcome\\Desktop\\hamada", 'haneen.txt', 'new.txt'):
+    if fm.rename_files("C:\\Users\\welcome\\Desktop\\hamada", 'haneen', 'new.txt'):
         print("File renamed successfully.")
     else:
         print("File rename failed.")
 
 
-        # Example: Modify the content 
+    # Example: Modify the content 
     print("\nModifying the content :")
     fm.modify_file_content('C:\\Users\\welcome\\Desktop\\hamada\\new.txt', 'blablabla')
     print("File content modified.")
@@ -63,3 +63,7 @@ if __name__ == "__main__":
     print("\nMoving 'example.txt' to './new_location':")
     fm.move_files(['C:\\Users\\welcome\\Desktop\\hamada\\new.txt'], 'C:\\Users\\welcome\\Desktop\\hamada\\ooo')
     
+
+
+
+   
