@@ -31,6 +31,10 @@ class FileManager:
 
     def move_files(self, files, target_directory):
         for file in files:
+            destination = os.path.join(target_directory, os.path.basename(file))
+            if os.path.exists(destination):
+                print(f"File '{destination}' already exists. Skipping move.")
+                continue  # Skip this file and move to the next one
             shutil.move(file, target_directory)
 
 if __name__ == "__main__":
@@ -38,7 +42,7 @@ if __name__ == "__main__":
     
    # Example: Search for files with  their name
     print("Searching for files with  their name:")
-    search_results = fm.search_files("C:\\Users\\welcome\\Desktop\\hamada", 'haneen')
+    search_results = fm.search_files("C:\\Users\\welcome\\Desktop\\hamada", 'or')
     print(search_results)
 
     # Example: Rename a file from 'old.txt' to 'new.txt'
