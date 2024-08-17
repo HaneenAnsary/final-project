@@ -1,0 +1,69 @@
+import os
+import shutil
+
+class FileManager:
+    def __init__(self):
+        pass
+
+    def search_files(self, directory, pattern):
+        matches = []
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                if pattern in file:
+                    matches.append(os.path.join(root, file))
+        return matches
+
+    def rename_files(self, directory, old_name, new_name):
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                if file == old_name:
+                    os.rename(os.path.join(root, file), os.path.join(root, new_name))
+                    return True
+        return False
+
+    def modify_file_content(self, file_path, new_content):
+        with open(file_path, 'w') as file:
+            file.write(new_content)
+
+    def copy_files(self, files, target_directory):
+        for file in files:
+            shutil.copy(file, target_directory)
+
+    def move_files(self, files, target_directory):
+        for file in files:
+            shutil.move(file, target_directory)
+
+if __name__ == "__main__":
+    fm = FileManager()
+    
+   # Example: Search for files with  their name
+    print("Searching for files with  their name:")
+    search_results = fm.search_files("C:\\Users\\welcome\\Desktop\\hamada", 'haneen')
+    print(search_results)
+
+    # Example: Rename a file from 'old.txt' to 'new.txt'
+    print("\nRenaming 'old.txt' to 'new.txt':")
+    if fm.rename_files("C:\\Users\\welcome\\Desktop\\hamada", 'haneen', 'new.txt'):
+        print("File renamed successfully.")
+    else:
+        print("File rename failed.")
+
+
+    # Example: Modify the content 
+    print("\nModifying the content :")
+    fm.modify_file_content('C:\\Users\\welcome\\Desktop\\hamada\\new.txt', 'blablabla')
+    print("File content modified.")
+
+    # Example: Copying file
+    print("\nCopying 'example.txt' to './backup':")
+    fm.copy_files(['C:\\Users\\welcome\\Desktop\\hamada\\new.txt'], 'C:\\Users\\welcome\\Desktop\\hamada\\ooo')
+    print("File copied.")
+    
+    # Example: Moving file
+    print("\nMoving 'example.txt' to './new_location':")
+    fm.move_files(['C:\\Users\\welcome\\Desktop\\hamada\\new.txt'], 'C:\\Users\\welcome\\Desktop\\hamada\\ooo')
+    
+
+
+
+   
